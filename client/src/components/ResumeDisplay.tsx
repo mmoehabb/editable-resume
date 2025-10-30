@@ -48,28 +48,6 @@ export default function ResumeDisplay({ resume }: ResumeDisplayProps) {
         </p>
       </div>
 
-      {/* Projects Section */}
-      {resume.projects.length > 0 && (
-        <div className="mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b-2 border-gray-300">
-            Projects
-          </h2>
-          <div className="space-y-4">
-            {resume.projects.map((project) => (
-              <div key={project.id}>
-                <div className="flex justify-between items-start mb-1">
-                  <h3 className="font-bold text-gray-900">{project.title}</h3>
-                  <span className="text-sm text-gray-600">{project.date}</span>
-                </div>
-                <p className="text-sm text-gray-700 leading-relaxed">
-                  {project.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
       {/* Experience Section */}
       {resume.experience.length > 0 && (
         <div className="mb-8">
@@ -95,21 +73,21 @@ export default function ResumeDisplay({ resume }: ResumeDisplayProps) {
         </div>
       )}
 
-      {/* Education Section */}
-      {resume.education.length > 0 && (
+      {/* Projects Section */}
+      {resume.projects.length > 0 && (
         <div className="mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b-2 border-gray-300">
-            Education
+            Projects
           </h2>
           <div className="space-y-4">
-            {resume.education.map((edu) => (
-              <div key={edu.id}>
+            {resume.projects.map((project) => (
+              <div key={project.id}>
                 <div className="flex justify-between items-start mb-1">
-                  <h3 className="font-bold text-gray-900">{edu.institution}</h3>
-                  <span className="text-sm text-gray-600">{edu.date}</span>
+                  <h3 className="font-bold text-gray-900">{project.title}</h3>
+                  <span className="text-sm text-gray-600">{project.date}</span>
                 </div>
-                <p className="text-sm font-semibold text-gray-800">
-                  {edu.degree} {edu.major && `- ${edu.major}`}
+                <p className="text-sm text-gray-700 leading-relaxed">
+                  {project.description}
                 </p>
               </div>
             ))}
@@ -117,22 +95,46 @@ export default function ResumeDisplay({ resume }: ResumeDisplayProps) {
         </div>
       )}
 
-      {/* Languages Section */}
-      {resume.languages.length > 0 && (
-        <div className="mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b-2 border-gray-300">
-            Languages
-          </h2>
-          <div className="text-sm text-gray-700">
-            {resume.languages.map((lang, idx) => (
-              <span key={idx}>
-                <span className="font-semibold">{lang.name}</span> ({lang.proficiency})
-                {idx < resume.languages.length - 1 && ", "}
-              </span>
-            ))}
+      <div className="flex flex-row gap-8">
+        {/* Education Section */}
+        {resume.education.length > 0 && (
+          <div className="mb-8 w-full">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b-2 border-gray-300">
+              Education
+            </h2>
+            <div className="space-y-4">
+              {resume.education.map((edu) => (
+                <div key={edu.id}>
+                  <div className="flex justify-between items-start mb-1">
+                    <h3 className="font-bold text-gray-900">{edu.institution}</h3>
+                    <span className="text-sm text-gray-600">{edu.date}</span>
+                  </div>
+                  <p className="text-sm font-semibold text-gray-800">
+                    {edu.degree} {edu.major && `- ${edu.major}`}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      )}
+        )}
+
+        {/* Languages Section */}
+        {resume.languages.length > 0 && (
+          <div className="mb-8 w-full">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b-2 border-gray-300">
+              Languages
+            </h2>
+            <div className="text-sm text-gray-700">
+              {resume.languages.map((lang, idx) => (
+                <span key={idx}>
+                  <span className="font-semibold">{lang.name}</span> ({lang.proficiency})
+                  {idx < resume.languages.length - 1 && ", "}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
 
       {/* Certificates Section */}
       {resume.certificates.length > 0 && (
