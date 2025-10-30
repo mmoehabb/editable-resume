@@ -17,3 +17,6 @@
 - [x] Hide navigation bar when printing or exporting to PDF
 - [x] Fix ResumeEditor component import and JSX issues
 - [x] Add Experience section to resume
+
+## New Tasks
+- [x] Create GitHub Pages deploy workflow
